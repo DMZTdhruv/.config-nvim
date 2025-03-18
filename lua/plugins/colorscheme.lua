@@ -4,31 +4,27 @@ return {
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    priority = 1000, -- Make sure to load this before all the other start plugins
+    priority = 1000,
     config = function()
       require("rose-pine").setup({
-        -- Choose variant: 'auto', 'main', 'moon', or 'dawn'
-        variant = "main",
-        -- Enable dark variant for dark mode, and light variant for light mode
+        variant = "down",
         dark_variant = "main",
-        -- Enable transparent background
         transparent = false,
-        -- Make background darker or lighter for contrast
-        dim_inactive_windows = false,
-        -- Disable bold text
-        disable_italics = false,
-        -- Use for filetype highlighting
+        dim_inactive_windows = true,
+        disable_italics = true,
         highlight_groups = {
-          -- You can customize specific highlight groups here
+          Cursor = { bg = "#ffffff", fg = "#1e1e2e" }, -- Change cursor color
+          CursorLine = { bg = "#2a2a37" }, -- Optional: Line highlight
+          CursorColumn = { bg = "#2a2a37" }, -- Optional: Column highlight
         },
       })
       -- Set colorscheme
       vim.cmd("colorscheme rose-pine")
-      -- Additional transparency settings (uncomment if needed)
       -- vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
       -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
       -- vim.api.nvim_set_hl(0, "NormalNC", { bg = "NONE" })
       -- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
+      --
     end,
   },
   -- Status line with rose-pine support
@@ -76,8 +72,7 @@ return {
               text_align = "left",
             },
           },
-          separator_style = "slant",
-          -- Apply colors that work with rose-pine
+          separator_style = "",
           themable = true,
         },
         -- Optional: Custom highlight groups for better integration with rose-pine
